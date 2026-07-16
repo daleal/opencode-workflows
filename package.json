@@ -1,0 +1,32 @@
+{
+  "name": "@daleal/opencode-workflows",
+  "version": "0.1.0",
+  "description": "Structured agent workflows with progress tracking for OpenCode",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/daleal/opencode-workflows.git"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "files": [
+    "src",
+    "skills"
+  ],
+  "exports": {
+    "./server": "./src/server.ts",
+    "./tui": "./src/tui.tsx"
+  },
+  "dependencies": {
+    "@opencode-ai/plugin": "1.18.2",
+    "@opentui/keymap": "0.4.3",
+    "@opentui/solid": "0.4.3",
+    "solid-js": "1.9.12"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^6.0.3",
+    "@types/bun": "latest"
+  }
+}

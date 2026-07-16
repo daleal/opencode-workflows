@@ -237,6 +237,7 @@ export async function promptStructured<Schema extends z.ZodType>(
     },
     { throwOnError: true },
   )
+  if (!result.data) throw new Error("Structured prompt returned no data")
 
   return schema.parse(result.data.info.structured)
 }

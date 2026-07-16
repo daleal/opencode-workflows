@@ -102,7 +102,7 @@ function View(props: { api: TuiPluginApi; runs: () => Map<string, WorkflowState>
 
   return (
     <Show when={run()}>
-      {(active) => (
+      {(active: () => WorkflowProgress) => (
         <box
           width="100%"
           flexShrink={0}
@@ -188,7 +188,7 @@ const tui: TuiPlugin = async (api) => {
 }
 
 const plugin: TuiPluginModule & { id: string } = {
-  id: "workflow-progress",
+  id: "daleal.workflows",
   tui,
 }
 
