@@ -1,6 +1,6 @@
 # @daleal/opencode-workflows
 
-Structured TypeScript workflows for OpenCode, including the `workflows` skill and the `run-workflow` tool.
+Structured workflows support for OpenCode, _à la_ Claude Code ultracode workflows.
 
 ## Install
 
