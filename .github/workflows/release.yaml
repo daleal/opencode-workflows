@@ -46,7 +46,7 @@ jobs:
         run: bun run typecheck
 
       - name: Lint
-        run: bun run lint
+        run: bun run lint && bun run format:check
 
       - name: Bump package version
         id: version
