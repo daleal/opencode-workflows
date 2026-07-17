@@ -1,6 +1,6 @@
 {
   "name": "@daleal/opencode-workflows",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Structured agent workflows with progress tracking for OpenCode",
   "repository": {
     "type": "git",

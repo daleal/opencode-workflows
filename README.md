@@ -4,14 +4,14 @@ Structured workflows support for OpenCode, _à la_ Claude Code ultracode workflo
 
 ## Install
 
-Use OpenCode's **Install plugin** command and enter `@daleal/opencode-workflows@0.1.2`.
+Use OpenCode's **Install plugin** command and enter `@daleal/opencode-workflows@0.1.3`.
 
 For manual installation, add the package to `.opencode/opencode.jsonc`:
 
 ```jsonc
 {
   "$schema": "https://opencode.ai/config.json",
-  "plugin": ["@daleal/opencode-workflows@0.1.2"],
+  "plugin": ["@daleal/opencode-workflows@0.1.3"],
 }
 ```
 
