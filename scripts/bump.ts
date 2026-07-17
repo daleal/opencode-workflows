@@ -2,6 +2,7 @@ import { readFileSync, writeFileSync, appendFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 const packagePath = 'package.json';
+const readmePath = 'README.md';
 
 type ReleaseType = 'major' | 'minor' | 'patch';
 type PackageJson = {
@@ -19,6 +20,7 @@ const readPackage = (packagePath: string): PackageJson =>
   JSON.parse(readFileSync(join(process.cwd(), packagePath), 'utf8')) as PackageJson;
 
 const pkg = readPackage(packagePath);
+const readme = readFileSync(join(process.cwd(), readmePath), 'utf8');
 const versionParts = pkg.version.split('.').map(Number);
 
 if (versionParts.length !== 3 || versionParts.some((part) => Number.isNaN(part))) {
@@ -33,8 +35,17 @@ const nextVersion = {
   patch: `${major}.${minor}.${patch + 1}`,
 }[releaseType];
 
+const currentPackageSpec = `${pkg.name}@${pkg.version}`;
+if (!readme.includes(currentPackageSpec)) {
+  throw new Error(`Current package version not found in ${readmePath}`);
+}
+
 pkg.version = nextVersion;
 writeFileSync(join(process.cwd(), packagePath), `${JSON.stringify(pkg, null, 2)}\n`);
+writeFileSync(
+  join(process.cwd(), readmePath),
+  readme.replaceAll(currentPackageSpec, `${pkg.name}@${nextVersion}`),
+);
 
 if (process.env.GITHUB_OUTPUT) {
   appendFileSync(process.env.GITHUB_OUTPUT, `version=${nextVersion}\n`);
